@@ -31,3 +31,5 @@ Giving users a fast and easy way to track their money is important, but allowing
 ## Screenshots
 
 ## License
+
+![MIT License](https://img.shields.io/badge/License-MIT-green)
