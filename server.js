@@ -15,6 +15,7 @@ const app = express();
 app.use(logger("dev"));
 
 app.use(compression());
+
 // Set up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,6 +26,8 @@ app.use(express.static("public"));
 //Connect to the database
 mongoose.connect("mongodb://localhost/budget", {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
   useFindAndModify: false,
 });
 
