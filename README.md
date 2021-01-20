@@ -5,6 +5,7 @@
 [Description](#description)  
 [User Story](#user-story)  
 [Business Context](#business-context)  
+[Instructions for Use](#instructions-for-use)  
 [Technologies Used](#technologies-used)  
 [Links](#links)  
 [Screenshots](#screenshots)  
