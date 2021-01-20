@@ -1,9 +1,9 @@
 let db;
-// Creating a new database request for a "budget" database.
+// Create a new database request for a "budget" database.
 const request = indexedDB.open("budget", 1);
 
 request.onupgradeneeded = function (event) {
-  // create object store called "pending" and set autoIncrement to true
+  // Create an object store called "pending" and set the autoIncrement to true.
   const db = event.target.result;
   db.createObjectStore("pending", { autoIncrement: true });
 };
@@ -11,7 +11,7 @@ request.onupgradeneeded = function (event) {
 request.onsuccess = function (event) {
   db = event.target.result;
 
-  // Check to see if the app is online before reading from database
+  // Check to see if the app is online before reading from the database.
   if (navigator.onLine) {
     checkDatabase();
   }
@@ -22,22 +22,22 @@ request.onerror = function (event) {
 };
 
 function saveRecord(record) {
-  // create a transaction on the pending db with readwrite access
+  // Create a pending transaction.
   const transaction = db.transaction(["pending"], "readwrite");
 
-  // access your pending object store
+  // Access your pending object store.
   const store = transaction.objectStore("pending");
 
-  // add record to your store with add method.
+  // Add the record to your store using the add method.
   store.add(record);
 }
 
 function checkDatabase() {
-  // open a transaction on your pending db
+  // Open a transaction from the pending database.
   const transaction = db.transaction(["pending"], "readwrite");
-  // access your pending object store
+  // Access your pending object store.
   const store = transaction.objectStore("pending");
-  // get all records from store and set to a variable
+  // Get all of the records from store and set to a variable.
   const getAll = store.getAll();
 
   getAll.onsuccess = function () {
@@ -52,18 +52,18 @@ function checkDatabase() {
       })
         .then((response) => response.json())
         .then(() => {
-          // if successful, open a transaction on your pending db
+          // If successful, open a transaction from the pending database.
           const transaction = db.transaction(["pending"], "readwrite");
 
-          // access your pending object store
+          // Access your pending object store.
           const store = transaction.objectStore("pending");
 
-          // clear all items in your store
+          // Clear all of the items in your store.
           store.clear();
         });
     }
   };
 }
 
-// listen for app coming back online
+// Listen for the app to come back online.
 window.addEventListener("online", checkDatabase);
