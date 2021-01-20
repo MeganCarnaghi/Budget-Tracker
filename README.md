@@ -12,7 +12,7 @@
 
 ## Description
 
-A budget tracker that works both online and offline. Users can add expenses and deposits to their budget with or without a connection. Once brought back online, the total will be populated with the new expenses and deposits taken into consideration.
+A budget tracker that works both online and offline. Users can add expenses and deposits to their budget with or without an internet connection. Once brought back online, the total will be populated with the new expenses and deposits taken into consideration.
 
 ## User Story
 
@@ -26,9 +26,12 @@ Giving users a fast and easy way to track their money is important, but allowing
 
 ## Instructions for Use
 
-- Run `npm install`
-- Run `npm run seed`
-- Run `npm start`
+To open via the command line:
+
+1. Navigate to file directory on your local machine.
+2. Run `npm install`
+3. Run `npm start`
+4. The app should be running on: http://localhost:3000/
 
 ## Technologies Used
 
@@ -44,11 +47,13 @@ Giving users a fast and easy way to track their money is important, but allowing
 
 ## Links
 
-GitHub Repository:
+GitHub Repository: https://github.com/MeganCarnaghi/Budget-Tracker.git
 
 Deployed Application:
 
 ## Screenshots
+
+![Screenshot](public/assets/screenshot.jpg)
 
 ## License
 
