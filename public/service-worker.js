@@ -22,11 +22,11 @@ self.addEventListener("install", function (evt) {
       return cache.addAll(FILES_TO_CACHE);
     })
   );
-
+  // Tells browser to activate the Service Worker as soon as it has finished installing
   self.skipWaiting();
 });
 
-// activate (clear out old cache)
+// Activate (clear out old cache)
 self.addEventListener("activate", function (evt) {
   evt.waitUntil(
     caches.keys().then((keyList) => {
@@ -61,14 +61,14 @@ self.addEventListener("fetch", function (evt) {
               return response;
             })
             .catch((err) => {
-              // Network request failed, try to get it from the cache.
+              // If the network request failed, try to get it from the cache.
               return cache.match(evt.request);
             });
         })
         .catch((err) => console.log(err))
     );
   } else {
-    // if the request is not for the API, serve static assets using "offline-first" approach.
+    // If the request is not for the API, serve static assets using "offline-first" approach.
     evt.respondWith(
       caches.open(CACHE_NAME).then((cache) => {
         return cache.match(evt.request).then((response) => {
