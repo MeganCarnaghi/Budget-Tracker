@@ -3,7 +3,7 @@ let db;
 const request = indexedDB.open("budget", 1);
 
 request.onupgradeneeded = function (event) {
-  // Create an object store called "pending" and set the autoIncrement to true.
+  // Ceate an object store called "pending" and set autoIncrement to true.
   const db = event.target.result;
   db.createObjectStore("pending", { autoIncrement: true });
 };
@@ -11,21 +11,21 @@ request.onupgradeneeded = function (event) {
 request.onsuccess = function (event) {
   db = event.target.result;
 
-  // Check to see if the app is online before reading from the database.
+  // Check to see if the app is online before reading from db.
   if (navigator.onLine) {
     checkDatabase();
   }
 };
 
 request.onerror = function (event) {
-  console.log("ERROR: " + event.target.errorCode);
+  console.log("ERROR! " + event.target.errorCode);
 };
 
 function saveRecord(record) {
-  // Create a pending transaction.
+  // Create a transaction on the pending database with readwrite access.
   const transaction = db.transaction(["pending"], "readwrite");
 
-  // Access your pending object store.
+  // Cccess your pending object store.
   const store = transaction.objectStore("pending");
 
   // Add the record to your store using the add method.
@@ -33,7 +33,7 @@ function saveRecord(record) {
 }
 
 function checkDatabase() {
-  // Open a transaction from the pending database.
+  // Ppen a transaction on your pending database.
   const transaction = db.transaction(["pending"], "readwrite");
   // Access your pending object store.
   const store = transaction.objectStore("pending");
@@ -52,7 +52,7 @@ function checkDatabase() {
       })
         .then((response) => response.json())
         .then(() => {
-          // If successful, open a transaction from the pending database.
+          // If successful, open a transaction on your pending database.
           const transaction = db.transaction(["pending"], "readwrite");
 
           // Access your pending object store.
@@ -65,5 +65,5 @@ function checkDatabase() {
   };
 }
 
-// Listen for the app to come back online.
+// Listen for the app coming back online.
 window.addEventListener("online", checkDatabase);
