@@ -50,7 +50,7 @@ To open via the command line:
 
 GitHub Repository: https://github.com/MeganCarnaghi/Budget-Tracker.git
 
-Deployed Application:
+Deployed Application: https://thawing-ocean-12724.herokuapp.com/
 
 ## Screenshots
 
